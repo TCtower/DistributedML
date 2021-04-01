@@ -1,0 +1,45 @@
+##!/bin/sh
+#PBS -N o_mpi_ps
+#PBS -l nodes=1:ppn=1 -W x=GRES:gpu@1
+#PBS -l walltime=36:00:00
+#PBS -q qgpu01
+#PBS -V
+#PBS -S /bin/bash
+
+module load anaconda3-5.2.0
+module load cuda-9.0
+module load openmpi-3.0.1-gcc-5.5.0
+source activate py_gpu
+#################################################################
+NP=`cat $PBS_NODEFILE | wc -l`
+NN=`cat $PBS_NODEFILE | sort | uniq | tee /tmp/nodes.$$ | wc -l`
+cat $PBS_NODEFILE > /tmp/nodefile.$$
+echo "process will start at : "
+date
+echo "++++++++++++++++++++++++++++++++++++++++"
+cd $PBS_O_WORKDIR
+
+nvidia-smi > nv.out
+
+# mpirun -n $NP python main_Non_IID.py --aggregator=mean --compression=none --ratio=1.0 --shuffle-worker=1 --random-assign-list=0 > test_mean_w5_r1_1.out
+# mpirun -n $NP python main_Non_IID.py --aggregator=mean --compression=topk --ratio=0.001 --shuffle-worker=1 --random-assign-list=0 > test_mean_w5_r001_1.out
+# mpirun -n $NP python main_Non_IID.py --aggregator=mean --compression=topk --ratio=0.0001 --shuffle-worker=1 --random-assign-list=0 > test_mean_w5_r0001_1.out
+# mpirun -n $NP python main_Non_IID.py --aggregator=mean --compression=topk --ratio=0.00001 --shuffle-worker=1 --random-assign-list=0 > test_mean_w5_r00001_1.out
+# mpirun -n $NP python main_Non_IID.py --aggregator=mean --compression=none --ratio=1.0 --shuffle-worker=1 --random-assign-list=0 > test_mean_w5_r1_2.out
+# mpirun -n $NP python main_Non_IID.py --aggregator=mean --compression=topk --ratio=0.001 --shuffle-worker=1 --random-assign-list=0 > test_mean_w5_r001_2.out
+# mpirun -n $NP python main_Non_IID.py --aggregator=mean --compression=topk --ratio=0.0001 --shuffle-worker=1 --random-assign-list=0 > test_mean_w5_r0001_2.out
+# mpirun -n $NP python main_Non_IID.py --aggregator=mean --compression=topk --ratio=0.00001 --shuffle-worker=1 --random-assign-list=0 > test_mean_w5_r00001_2.out
+
+# mpirun -n $NP python main_IID.py --aggregator=mean --compression=none --ratio=1 --shuffle-worker=1 --random-assign-list=0 --local-config=0 > test_iid_mean_w5_r1_1.out
+# mpirun -n $NP python main_IID.py --aggregator=mean --compression=topk --ratio=0.001 --shuffle-worker=1 --random-assign-list=0 --local-config=0 > test_iid_mean_w5_r001_1.out
+# mpirun -n $NP python main_IID.py --aggregator=mean --compression=topk --ratio=0.0001 --shuffle-worker=1 --random-assign-list=0 --local-config=0 > test_iid_mean_w5_r0001_1.out
+mpirun -n $NP python main_IID.py --aggregator=mean --compression=topk --ratio=0.00001 --shuffle-worker=1 --random-assign-list=0 --local-config=0 > test_iid_mean_w5_r00001_1.out
+
+echo "++++++++++++++++++++++++++++++++++++++++"
+echo "process end at : "
+date
+rm -f /tmp/nodefile.$$
+rm -f /tmp/nodes.$$
+
+module unload openmpi-3.0.1-gcc-5.5.0
+module unload cuda-9.0
