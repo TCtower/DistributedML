@@ -228,7 +228,7 @@ def train(workers, train_data_list, test_data):
                 accum_g_list.append(delta_ws)
             else:
                 for p_idx, param in enumerate(global_model.parameters()):
-                    accum_g_list[i - 1][p_idx] += delta_ws[p_idx]
+                    accum_g_list[i - 1][p_idx] = delta_ws[p_idx]
 
             iteration_loss += loss.data.item() / worker_number
             # print(len(delta_ws))
@@ -324,7 +324,7 @@ if __name__ == '__main__':
     worker_number = args.workers
     workers = [v + 1 for v in range(worker_number)]
 
-    train_data_list, test_loader = data_utils.get_loader(batch_size, worker_number, 4)
+    train_data_list, test_loader = data_utils.get_loader(batch_size, worker_number, 10)
     print("finish")
     # # train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
     # test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=True)

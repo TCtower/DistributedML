@@ -21,19 +21,7 @@ cd $PBS_O_WORKDIR
 
 nvidia-smi > nv.out
 
-# mpirun -n $NP python main_Non_IID.py --aggregator=mean --compression=none --ratio=1.0 --shuffle-worker=1 --random-assign-list=0 > test_mean_w5_r1_1.out
-# mpirun -n $NP python main_Non_IID.py --aggregator=mean --compression=topk --ratio=0.001 --shuffle-worker=1 --random-assign-list=0 > test_mean_w5_r001_1.out
-# mpirun -n $NP python main_Non_IID.py --aggregator=mean --compression=topk --ratio=0.0001 --shuffle-worker=1 --random-assign-list=0 > test_mean_w5_r0001_1.out
-# mpirun -n $NP python main_Non_IID.py --aggregator=mean --compression=topk --ratio=0.00001 --shuffle-worker=1 --random-assign-list=0 > test_mean_w5_r00001_1.out
-# mpirun -n $NP python main_Non_IID.py --aggregator=mean --compression=none --ratio=1.0 --shuffle-worker=1 --random-assign-list=0 > test_mean_w5_r1_2.out
-# mpirun -n $NP python main_Non_IID.py --aggregator=mean --compression=topk --ratio=0.001 --shuffle-worker=1 --random-assign-list=0 > test_mean_w5_r001_2.out
-# mpirun -n $NP python main_Non_IID.py --aggregator=mean --compression=topk --ratio=0.0001 --shuffle-worker=1 --random-assign-list=0 > test_mean_w5_r0001_2.out
-# mpirun -n $NP python main_Non_IID.py --aggregator=mean --compression=topk --ratio=0.00001 --shuffle-worker=1 --random-assign-list=0 > test_mean_w5_r00001_2.out
-
-# mpirun -n $NP python main_IID.py --aggregator=mean --compression=none --ratio=1 --shuffle-worker=1 --random-assign-list=0 --local-config=0 > test_iid_mean_w5_r1_1.out
-# mpirun -n $NP python main_IID.py --aggregator=mean --compression=topk --ratio=0.001 --shuffle-worker=1 --random-assign-list=0 --local-config=0 > test_iid_mean_w5_r001_1.out
-# mpirun -n $NP python main_IID.py --aggregator=mean --compression=topk --ratio=0.0001 --shuffle-worker=1 --random-assign-list=0 --local-config=0 > test_iid_mean_w5_r0001_1.out
-mpirun -n $NP python main_IID.py --aggregator=mean --compression=topk --ratio=0.00001 --shuffle-worker=1 --random-assign-list=0 --local-config=0 > test_iid_mean_w5_r00001_1.out
+mpirun -n $NP python main_Non_IID.py --aggregator=param --compression=topk --ratio=0.01 --workers=8 --shuffle-worker=1 --random-assign-list=0 --local-config=0 > test.out
 
 echo "++++++++++++++++++++++++++++++++++++++++"
 echo "process end at : "

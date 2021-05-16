@@ -10,7 +10,40 @@ def mean(args, workers, g_list):
     return g_list
 
 
-def param_flip_flop(args, workers, g_list, assign_list, device):
+# distribution list - assign by worker
+# [[0, 1], [1, 2]] - worker 1 chooses chunk 0 and chunk 1
+def chunk_flip_flop(args, workers, g_list, assign_list, distribution_list, device):
+    worker_number = len(workers)
+    chunk_number = args.chunks
+    chunk_count = [0 for i in range(chunk_number)]
+    # count the number in each chunk
+    for i in range(worker_number):
+        worker_chunk_list = distribution_list[i]
+        for j in range(len(worker_chunk_list)):
+            chunk_count[worker_chunk_list[j]] += 1
+
+    print("worker: ", distribution_list)
+    print("chunk count: ", chunk_count)
+
+    for g_idx, g_param in enumerate(g_list[0]):
+
+        for i in range(worker_number):
+            mask_not = 0
+            for j in range(len(distribution_list[i])):
+                core = distribution_list[i][j]
+                mask_is = assign_list[g_idx] == core
+                if mask_not == 0:
+                    mask_not = assign_list[g_idx] != core
+                else:
+                    mask_not = mask_not & (assign_list[g_idx] != core)
+                g_list[i][g_idx][mask_is] /= chunk_count[core]
+
+            g_list[i][g_idx][mask_not] = 0.
+
+    return g_list
+
+
+def param_flip_flop(args, workers, g_list, assign_list, param_level, device):
     worker_number = len(workers)
     g_res = []
 
@@ -38,10 +71,17 @@ def param_flip_flop(args, workers, g_list, assign_list, device):
             cores_i = cores_worker_list[i]
             mask = assign_list[g_idx] != cores_i
             # print(mask)
+            for j in range(1, param_level):
+                cores_j = cores_worker_list[(i + j) % worker_number]
+                mask = mask & (assign_list[g_idx] != cores_j)
+                # [1, 0, 2, 1, 0]
+                # i = 1: false, true, true, false, true
+                # j = 2: true, true, false, true, true
             g_list[i][g_idx][mask] = 0.
+            g_list[i][g_idx] /= param_level
             # g_param_tmp[mask] = g_list[i][g_idx][mask]
 
-    return g_list
+    return g_list, cores_worker_list
 
 
 def layer_flip_flop(args, workers, g_list):
