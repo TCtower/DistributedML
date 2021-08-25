@@ -21,7 +21,7 @@ cd $PBS_O_WORKDIR
 
 nvidia-smi > nv.out
 
-mpirun -n $NP python main_Non_IID.py --aggregator=param --compression=topk --ratio=0.01 --workers=8 --shuffle-worker=1 --random-assign-list=0 --local-config=0 > test.out
+mpirun -n $NP python prelim/main_IID_Iden.py --aggregator=mean --compression=none --ratio=0.01 --shuffle-worker=1 --random-assign-list=0 --local-config=0 > test.out
 
 echo "++++++++++++++++++++++++++++++++++++++++"
 echo "process end at : "

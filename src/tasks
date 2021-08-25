@@ -1,0 +1,40 @@
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=mean --model=alexnet --data=MNIST --data-setting=data_setting_1 > MNIST_1_mean.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=flipflop_client --model=alexnet --data=MNIST --data-setting=data_setting_1 > MNIST_1_client.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=flipflop_layer --model=alexnet --data=MNIST --data-setting=data_setting_1 > MNIST_1_layer.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=random_client --model=alexnet --data=MNIST --data-setting=data_setting_1 > MNIST_1_random.out
+
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=mean --model=alexnet --data=MNIST --data-setting=data_setting_2 > MNIST_2_mean.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=flipflop_client --model=alexnet --data=MNIST --data-setting=data_setting_2 > MNIST_2_client.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=flipflop_layer --model=alexnet --data=MNIST --data-setting=data_setting_2 > MNIST_2_layer.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=random_client --model=alexnet --data=MNIST --data-setting=data_setting_2 > MNIST_2_random.out
+
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=mean --model=alexnet --data=MNIST --data-setting=data_setting_3 > MNIST_3_mean.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=flipflop_client --model=alexnet --data=MNIST --data-setting=data_setting_3 > MNIST_3_client.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=flipflop_layer --model=alexnet --data=MNIST --data-setting=data_setting_3 > MNIST_3_layer.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=random_client --model=alexnet --data=MNIST --data-setting=data_setting_3 > MNIST_3_random.out
+
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=mean --model=alexnet --data=MNIST --data-setting=data_setting_4 > MNIST_4_mean.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=flipflop_client --model=alexnet --data=MNIST --data-setting=data_setting_4 > MNIST_4_client.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=flipflop_layer --model=alexnet --data=MNIST --data-setting=data_setting_4 > MNIST_4_layer.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=random_client --model=alexnet --data=MNIST --data-setting=data_setting_4 > MNIST_4_random.out
+
+
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=mean --model=alexnet --data=FashionMnist --data-setting=data_setting_1 > FashionMNIST_1_mean.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=flipflop_client --model=alexnet --data=FashionMnist --data-setting=data_setting_1 > FashionMNIST_1_client.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=flipflop_layer --model=alexnet --data=FashionMnist --data-setting=data_setting_1 > FashionMNIST_1_layer.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=random_client --model=alexnet --data=FashionMnist --data-setting=data_setting_1 > FashionMNIST_1_random.out
+
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=mean --model=alexnet --data=FashionMnist --data-setting=data_setting_2 > FashionMNIST_2_mean.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=flipflop_client --model=alexnet --data=FashionMnist --data-setting=data_setting_2 > FashionMNIST_2_client.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=flipflop_layer --model=alexnet --data=FashionMnist --data-setting=data_setting_2 > FashionMNIST_2_layer.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=random_client --model=alexnet --data=FashionMnist --data-setting=data_setting_2 > FashionMNIST_2_random.out
+
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=mean --model=alexnet --data=FashionMnist --data-setting=data_setting_3 > FashionMNIST_3_mean.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=flipflop_client --model=alexnet --data=FashionMnist --data-setting=data_setting_3 > FashionMNIST_3_client.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=flipflop_layer --model=alexnet --data=FashionMnist --data-setting=data_setting_3 > FashionMNIST_3_layer.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=random_client --model=alexnet --data=FashionMnist --data-setting=data_setting_3 > FashionMNIST_3_random.out
+
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=mean --model=alexnet --data=FashionMnist --data-setting=data_setting_4 > FashionMNIST_4_mean.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=flipflop_client --model=alexnet --data=FashionMnist --data-setting=data_setting_4 > FashionMNIST_4_client.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=flipflop_layer --model=alexnet --data=FashionMnist --data-setting=data_setting_4 > FashionMNIST_4_layer.out
+python prelim_fine/main_non_IID.py --iterations=20 --compression=none --local-config=0 --local-updates=50 --train-bsz=64 --aggregator=random_client --model=alexnet --data=FashionMnist --data-setting=data_setting_4 > FashionMNIST_4_random.out
